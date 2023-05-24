@@ -1,0 +1,9 @@
+rootProject.name = 'ccrntest'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+includeBuild('../node_modules/react-native-gradle-plugin')
+
+include ':libservice'
+include ':libcocos'
+project(':libcocos').projectDir     = new File(COCOS_ENGINE_PATH,'cocos/platform/android/libcocos2dx')
+include ':libcocos2dx'
