@@ -36,8 +36,12 @@ Start react-native
 $ npx react-native start
 ```
 
-Build & run android
+Build & run Android
 ```
 $ npx react-native run-android
 ```
 
+Build & run iOS
+```
+$ npx react-native run-ios
+```
