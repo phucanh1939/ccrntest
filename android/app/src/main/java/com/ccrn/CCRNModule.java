@@ -20,7 +20,7 @@ public class CCRNModule extends ReactContextBaseJavaModule {
     @NonNull
     @Override
     public String getName() {
-        return "CocosGameStarter";
+        return "CCRNModule";
     }
 
     @ReactMethod
