@@ -10,5 +10,5 @@
             <category android:name="android.intent.category.LAUNCHER"/>
         </intent-filter>
       </activity>
-    <meta-data android:name="android.app.lib_name" android:value="cocos"/><activity android:name="com.ccrn.CocosGameActivity" android:exported="false"/><activity android:name="com.cocos.lib.CocosEditBoxActivity" android:configChanges="orientation|keyboardHidden|screenSize|screenLayout" android:screenOrientation="behind" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/></application>
+    <meta-data android:name="android.app.lib_name" android:value="cocos"/><activity android:name="com.ccrn.CCRNActivity" android:exported="false"/><activity android:name="com.cocos.lib.CocosEditBoxActivity" android:configChanges="orientation|keyboardHidden|screenSize|screenLayout" android:screenOrientation="behind" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/></application>
 </manifest>

@@ -88,7 +88,11 @@ void Game::startGame(const std::string &gameId)
 
 bool Game::hasGame(const std::string &gameId)
 {
-    return false;
+    const auto fileUtils = cc::FileUtils::getInstance();
+    const auto cachePath = fileUtils->getWritablePath() + "games/" + gameId;
+    CC_LOG_INFO("Game::hasGame(%s) - %d", gameId.c_str(), fileUtils->isDirectoryExist(gameId));
+    CC_LOG_INFO("Game::hasGame(%s) - %d", cachePath.c_str(), fileUtils->isDirectoryExist(cachePath));
+    return fileUtils->isDirectoryExist(gameId) || fileUtils->isDirectoryExist(cachePath);
 }
 
 void Game::runGame(const std::string &gameId)
@@ -100,6 +104,7 @@ void Game::runGame(const std::string &gameId)
     fileUtils->setSearchPaths(fileUtils->getOriginalSearchPaths());
     CC_LOG_INFO("Game::setSearchPaths(fileUtils->getOriginalSearchPaths())");
     const auto gamePath = fileUtils->getWritablePath() + "games/" + gameId;
+    fileUtils->addSearchPath(gameId);
     fileUtils->addSearchPath(gamePath);
     CC_LOG_INFO("Game::addSearchPath(%s)", gamePath.c_str());
 
@@ -257,13 +262,13 @@ std::string Game::getVersionKey(const std::string &gameId) {
 
 extern "C"
 {
-    JNIEXPORT void JNICALL Java_com_ccrn_CocosGameActivity_startGame(JNIEnv* env, jobject activity, jstring game_id)
+    JNIEXPORT void JNICALL Java_com_ccrn_CCRNActivity_startGame(JNIEnv* env, jobject activity, jstring game_id)
     {
         auto app = std::static_pointer_cast<Game>(CC_APPLICATION_MANAGER()->getCurrentApp());
         app->startGame(cc::JniHelper::jstring2string(game_id));
     }
 
-    JNIEXPORT void JNICALL Java_com_ccrn_CocosGameActivity_restartGame(JNIEnv* env, jobject activity)
+    JNIEXPORT void JNICALL Java_com_ccrn_CCRNActivity_restartGame(JNIEnv* env, jobject activity)
     {
         auto app = std::static_pointer_cast<Game>(CC_APPLICATION_MANAGER()->getCurrentApp());
         app->restart();

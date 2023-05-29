@@ -18,14 +18,14 @@ import com.cocos.lib.CocosHelper;
 import com.cocos.lib.CocosJavascriptJavaBridge;
 import com.cocos.service.SDKWrapper;
 
-public class CocosGameActivity extends CocosActivity {
+public class CCRNActivity extends CocosActivity {
     private String _gameId;
     public native void startGame(String gameId);
     public native void restartGame();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("CocosGameActivity", "onCreate");
+        Log.i("CCRNActivity", "onCreate");
         super.onCreate(savedInstanceState);
         SDKWrapper.shared().init(this);
         addHomeButton();
@@ -44,7 +44,7 @@ public class CocosGameActivity extends CocosActivity {
 
     @Override
     protected void onStart() {
-        Log.i("CocosGameActivity", "onStart");
+        Log.i("CCRNActivity", "onStart");
         SDKWrapper.shared().onStart();
         super.onStart();
 
@@ -52,7 +52,7 @@ public class CocosGameActivity extends CocosActivity {
         CocosHelper.runOnGameThread(new Runnable() {
             @Override
             public void run() {
-                startGame(CocosGameStarterModule.GAME_ID);
+                startGame(CCRNModule.GAME_ID);
             }
         });
     }
@@ -72,11 +72,11 @@ public class CocosGameActivity extends CocosActivity {
 
     @Override
     protected void onDestroy() {
-        Log.i("CocosGameActivity", "onDestroy");
+        Log.i("CCRNActivity", "onDestroy");
         super.onDestroy();
         // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
         if (!isTaskRoot()) {
-            Log.i("CocosGameActivity", "not isTaskRoot");
+            Log.i("CCRNActivity", "not isTaskRoot");
             return;
         }
         SDKWrapper.shared().onDestroy();

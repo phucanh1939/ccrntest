@@ -10,10 +10,10 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-public class CocosGameStarterModule extends ReactContextBaseJavaModule {
+public class CCRNModule extends ReactContextBaseJavaModule {
     public static String GAME_ID;
 
-    CocosGameStarterModule(ReactApplicationContext context) {
+    CCRNModule(ReactApplicationContext context) {
         super(context);
     }
 
@@ -27,7 +27,7 @@ public class CocosGameStarterModule extends ReactContextBaseJavaModule {
     public void startGame(String gameId) {
         GAME_ID = gameId;
         Activity currentActivity = getCurrentActivity();
-        Intent intent = new Intent(currentActivity, CocosGameActivity.class);
+        Intent intent = new Intent(currentActivity, CCRNActivity.class);
         currentActivity.startActivity(intent);
     }
 }
