@@ -31,17 +31,19 @@ $ cd server
 $ npm start
 ```
 
-Start react-native
+Start Metro
 ```console
 $ npx react-native start
 ```
 
-Build & run Android
+Android
 ```
 $ npx react-native run-android
 ```
 
-Build & run iOS
+iOS
 ```
+$ cd ios
+$ pod install
 $ npx react-native run-ios
 ```
